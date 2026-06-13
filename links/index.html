@@ -194,6 +194,32 @@
       min-width: 0;
     }
 
+    /* Founder card — circular headshot beside the copy */
+    .card.founder {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .card.founder .portrait {
+      flex: 0 0 64px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .card.founder .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+    .card.founder .body {
+      flex: 1;
+      min-width: 0;
+    }
+
     .card .eyebrow {
       font-family: var(--sans);
       font-weight: 600;
@@ -303,6 +329,18 @@
         <span class="eyebrow" style="display:block">How to Sell with Story</span>
         <span class="dest" style="display:block">The methodology — in a book</span>
         <span class="sub" style="display:block">The same story-first framework. Read it on Amazon.</span>
+      </span>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <div class="divider"><span>The founder</span></div>
+
+    <a class="card founder" style="--accent:#752cff" href="https://itschrisford.com" target="_blank" rel="noopener">
+      <span class="portrait"><img src="/cf-design.png" alt="Chris Ford" /></span>
+      <span class="body">
+        <span class="eyebrow" style="display:block">About the Founder</span>
+        <span class="dest" style="display:block">Meet Chris Ford.</span>
+        <span class="sub" style="display:block">The story, the method, and the lessons learned</span>
       </span>
       <span class="arrow">&rarr;</span>
     </a>
