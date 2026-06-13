@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chris Ford — Links</title>
+  <meta name="description" content="Chris Ford — Founder of The Narrative Companies, author of How to Sell With Story, and creator of Narrative StorySelling™." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Chris Ford — Links" />
+  <meta property="og:description" content="Founder of The Narrative Companies. Author of How to Sell With Story. Creator of Narrative StorySelling™." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:image" content="/cf-headshot.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700&family=Inter+Tight:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --ink: #1B1D22;        /* brand navy */
+      --ink-soft: #3a3c44;
+      --muted: rgba(27, 29, 34, 0.60);
+      --line: #ece3d4;       /* brand cream-dark */
+      --line-strong: #ddd2bf;
+      --paper: #FCF8F2;      /* brand cream */
+      --card: #ffffff;
+      /* brand accents */
+      --revenue: #E921A8;    /* Narrative Revenue — pink */
+      --careers: #0F4761;    /* Narrative Careers — teal */
+      --book:    #1B1D22;    /* The Book — brand navy */
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 56px 22px 48px;
+    }
+
+    /* ---- Avatar ---- */
+    .avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      margin: 0 auto 22px;
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: 0.02em;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+    }
+
+    /* ---- Identity ---- */
+    .identity { text-align: center; }
+
+    .name {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .handle {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+
+    .badge {
+      display: inline-block;
+      margin: 16px 0 0;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-family: var(--serif);
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 20px 0 0;
+    }
+
+    /* ---- Divider ---- */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 40px 0 18px;
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line-strong);
+    }
+    .divider span {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ---- Cards ---- */
+    .card {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent, var(--ink));
+      border-radius: 4px;
+      padding: 18px 44px 18px 20px;
+      margin: 0 0 14px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      border-left-color: var(--accent, var(--ink));
+    }
+
+    /* Book card — cover thumbnail beside the copy */
+    .card.book {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .card.book .cover {
+      flex: 0 0 88px;
+      width: 88px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+    .card.book .cover img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+    }
+    .card.book .body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card .eyebrow {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent, var(--ink));
+      margin: 0 0 6px;
+    }
+
+    .card .dest {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.35;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .card .sub {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .card .arrow {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+      font-family: var(--sans);
+      font-size: 18px;
+      color: var(--muted);
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+    .card:hover .arrow {
+      transform: translateY(-50%) translateX(2px);
+      color: var(--ink);
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      text-align: center;
+      margin: 44px 0 0;
+    }
+    .footer hr {
+      width: 40px;
+      border: 0;
+      border-top: 1px solid var(--line-strong);
+      margin: 0 auto 18px;
+    }
+    .footer .org {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      margin: 0;
+    }
+    .footer .creed {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- Avatar: replace inner content with <img src="/cf-headshot.png" alt="Chris Ford" /> -->
+    <div class="avatar">
+      <img src="/prof-ig.png" alt="Chris Ford" />
+    </div>
+
+    <section class="identity">
+      <h1 class="name">Chris Ford</h1>
+      <p class="handle">@itschrisford_</p>
+      <span class="badge">The Narrative Companies™</span>
+      <p class="tagline">I help people communicate their value. $28.6M+ in outcomes. Two companies. One methodology.</p>
+    </section>
+
+    <div class="divider"><span>The companies</span></div>
+
+    <a class="card" style="--accent:var(--revenue)" href="https://narrativerevenue.com" target="_blank" rel="noopener">
+      <p class="eyebrow">Narrative Revenue</p>
+      <p class="dest">Close more deals — built on the behavioral science of why buyers say yes.</p>
+      <p class="sub">For coaches, consultants &amp; micro-agency founders at the $35–50K MRR ceiling</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a class="card" style="--accent:var(--careers)" href="https://narrativecareers.com" target="_blank" rel="noopener">
+      <p class="eyebrow">Narrative Careers</p>
+      <p class="dest">Your kid deserves a job. Not just a diploma.</p>
+      <p class="sub">Career coaching for 16–21 year olds. No debt. No wait.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <div class="divider"><span>The book</span></div>
+
+    <a class="card book" style="--accent:var(--book)" href="https://www.amazon.com/How-Sell-Story-Message-Faster/dp/B0FV3L6LKT/" target="_blank" rel="noopener">
+      <span class="cover"><img src="/book-cover.jpg" alt="How to Sell with Story by Chris Ford" /></span>
+      <span class="body">
+        <span class="eyebrow" style="display:block">How to Sell with Story</span>
+        <span class="dest" style="display:block">The methodology — in a book</span>
+        <span class="sub" style="display:block">The same story-first framework. Read it on Amazon.</span>
+      </span>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <footer class="footer">
+      <hr />
+      <p class="org">The Narrative Companies™</p>
+      <p class="creed">Attention is currency. Story is how you earn it.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

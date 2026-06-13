@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Narrative Companies — Own Your Story</title>
+<meta name="description" content="A family of coaching and consulting companies built around one core belief: the right story, told well, can change your entire life." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<style>
+  :root{
+    --pink:#E921A8;
+    --purple:#B163E6;
+    --powder:#a883f8;
+    --dark-purple:#752cff;
+    --teal:#5CA1C1;
+    --dark-teal:#0F4761;
+    --bg:#1B1D22;
+    --bg-alt:#231A25;
+    --fg:#ffffff;
+    --muted:#a79fb0;
+    --line:rgba(255,255,255,.10);
+    --grad:linear-gradient(120deg,#E921A8 0%,#B163E6 45%,#752cff 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.2;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .grad-text{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+
+  /* ============ SCROLL-REVEAL INTRO (VaynerX-style logo mask) ============ */
+  /* tall scroller; the pin stays put while the N opens onto the hero behind it */
+  .intro-reveal{position:relative;height:150vh}
+  .pin{position:sticky;top:0;height:100vh;overflow:hidden}
+
+  /* the HERO that lives behind the N window */
+  .hero-bg{position:absolute;inset:0;overflow:hidden}
+  .field{
+    position:absolute;inset:-20%;
+    background:
+      radial-gradient(45% 55% at 28% 24%, rgba(233,33,168,1), transparent 62%),
+      radial-gradient(50% 60% at 76% 30%, rgba(177,99,230,1), transparent 62%),
+      radial-gradient(55% 65% at 46% 82%, rgba(117,44,255,1), transparent 62%),
+      radial-gradient(45% 55% at 84% 74%, rgba(92,161,193,.85), transparent 62%),
+      #3a1f55;
+    filter:saturate(1.1);
+    animation:drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    0%{transform:scale(1.1) translate(-2%,-1%)}
+    50%{transform:scale(1.25) translate(3%,2%)}
+    100%{transform:scale(1.15) translate(-1%,3%)}
+  }
+  .hero-copy{
+    position:absolute;inset:0;z-index:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:88px 24px 40px; /* clears the fixed nav */
+  }
+  .hero-copy .eyebrow{
+    font-size:clamp(11px,1.1vw,13px);letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;margin-bottom:20px;color:#fff;
+    text-shadow:0 2px 20px rgba(0,0,0,.3);
+  }
+  .hero-copy h1{
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    font-size:clamp(26px,5.4vw,84px);font-weight:800;letter-spacing:-.02em;
+    line-height:1;text-transform:uppercase;
+    text-shadow:0 4px 44px rgba(0,0,0,.35);
+  }
+  .hero-copy h1 span{display:block;white-space:nowrap}
+  .hero-copy h1 .l2{
+    font-weight:300;font-style:italic;letter-spacing:0;
+    font-size:.82em;opacity:.92;margin:.04em 0;
+  }
+  .hero-copy .lede{
+    margin-top:26px;max-width:560px;
+    font-size:clamp(15px,1.5vw,19px);line-height:1.5;color:rgba(255,255,255,.92);
+    text-shadow:0 2px 24px rgba(0,0,0,.4);
+  }
+
+  /* the charcoal cover with the real N glyph punched out, on top of the hero.
+     two mask layers (the N image + a solid fill) composited so the N becomes a hole. */
+  .reveal-cover{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:#1B1D22;
+    -webkit-mask-image:url('n icon transparent.png'), linear-gradient(#000,#000);
+    -webkit-mask-repeat:no-repeat, no-repeat;
+    -webkit-mask-position:center center, center center;
+    -webkit-mask-size:300px auto, cover;
+    -webkit-mask-composite:xor;
+    mask-image:url('n icon transparent.png'), linear-gradient(#000,#000);
+    mask-repeat:no-repeat, no-repeat;
+    mask-position:center center, center center;
+    mask-size:300px auto, cover;
+    mask-composite:exclude;
+    will-change:mask-size;
+  }
+
+  /* solid gradient N mark shown at load (the N glyph filled with the brand gradient) */
+  .logo-mark{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    z-index:3;width:300px;height:301px;pointer-events:none;
+    background:var(--grad);
+    -webkit-mask:url('n icon transparent.png') center/contain no-repeat;
+    mask:url('n icon transparent.png') center/contain no-repeat;
+  }
+
+  .cue{
+    position:absolute;left:50%;bottom:30px;transform:translateX(-50%);
+    z-index:3;color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.9;
+    transition:opacity .4s;mix-blend-mode:difference;
+  }
+  .cue.hide{opacity:0;pointer-events:none}
+  .cue .chev{width:14px;height:14px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);animation:bob 1.6s infinite}
+  @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+
+  /* ============ NAV ============ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 40px;transition:background .3s,border-color .3s;
+    border-bottom:1px solid transparent;
+  }
+  nav.solid{background:rgba(27,29,34,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center}
+  .brand img{height:30px;width:auto;display:block}
+  .nav-links{display:flex;gap:32px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .nav-links a{opacity:.8;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* ============ PAGE CONTENT (below the reveal) ============ */
+  .content{position:relative;z-index:10;background:var(--bg)}
+
+  .belief{border-bottom:1px solid var(--line);background:var(--bg-alt);padding:120px 40px}
+  .belief p{font-size:clamp(26px,4.2vw,58px);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:1240px}
+
+  .portfolio-head{padding:84px 40px 16px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+  .portfolio-head h3{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .portfolio-head .count{font-size:14px;color:var(--muted)}
+
+  .company{
+    position:relative;border-top:1px solid var(--line);padding:52px 40px;
+    display:grid;grid-template-columns:1fr 1.6fr auto;gap:40px;align-items:center;
+    transition:color .35s;overflow:hidden;
+  }
+  .company:last-of-type{border-bottom:1px solid var(--line)}
+  .company::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s;z-index:-1}
+  .company:hover::before{opacity:1}
+  .company:hover .c-desc{color:rgba(255,255,255,.92)}
+  .company:hover .c-arrow{transform:translateX(8px)}
+  .c-name{font-size:clamp(30px,4.5vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .c-desc{font-size:clamp(15px,1.7vw,19px);line-height:1.5;color:var(--muted);max-width:560px;transition:color .35s}
+  .c-cta{display:flex;align-items:center;gap:14px;white-space:nowrap;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .c-arrow{display:inline-block;font-size:24px;transition:transform .3s}
+  .company:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
+
+  /* Narrative Careers — blue/green identity */
+  .company.careers .c-name{
+    background:linear-gradient(120deg,#5CA1C1 0%,#0F4761 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  }
+  .company.careers::before{background:linear-gradient(120deg,#5CA1C1 0%,#0F4761 62%,#1f1c27 100%)}
+  .company.careers:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
+  /* Narrative StorySelling — amber/gold identity */
+  .company.storyselling .c-name{
+    background:linear-gradient(120deg,#F6B73C 0%,#E8852A 55%,#C2410C 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  }
+  .company.storyselling::before{background:linear-gradient(120deg,#F6B73C 0%,#E8852A 55%,#1f1c27 100%)}
+  .company.storyselling:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
+  @media(max-width:880px){.company{grid-template-columns:1fr;gap:18px;padding:44px 40px}.c-cta{justify-content:flex-start}}
+
+  /* ============ BOOK ============ */
+  .book{
+    border-top:1px solid var(--line);background:var(--bg-alt);
+    padding:96px 40px;display:flex;justify-content:center;
+  }
+  .book a{
+    display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;
+    max-width:1100px;width:100%;
+  }
+  .book .b-eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
+  .book .b-title{font-size:clamp(28px,3.8vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+  .book .b-desc{margin-top:16px;font-size:clamp(15px,1.6vw,18px);line-height:1.5;color:var(--muted);max-width:560px}
+  .book .b-cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .book .b-cta .c-arrow{font-size:24px;transition:transform .3s}
+  .book a:hover .b-cta .c-arrow{transform:translateX(8px)}
+  .book .b-mark{
+    width:170px;height:auto;border-radius:10px;flex-shrink:0;display:block;
+    box-shadow:0 18px 50px rgba(0,0,0,.5);
+  }
+  @media(max-width:880px){.book a{grid-template-columns:1fr;gap:24px;justify-items:start}}
+
+  /* ============ ABOUT THE FOUNDER ============ */
+  .founder{border-top:1px solid var(--line);padding:110px 40px}
+  .founder .wrap{max-width:1100px;margin:0 auto}
+  .founder .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:22px}
+  .founder h2{font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.05;max-width:900px}
+  .founder p{margin-top:24px;font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:var(--muted);max-width:720px}
+  .founder .f-cta{
+    display:inline-flex;align-items:center;gap:12px;margin-top:34px;
+    font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;
+    padding:14px 24px;border:1px solid var(--line);border-radius:999px;transition:background .3s,border-color .3s;
+  }
+  .founder .f-cta:hover{background:var(--grad);border-color:transparent}
+  .founder .f-cta .c-arrow{font-size:22px;transition:transform .3s}
+  .founder .f-cta:hover .c-arrow{transform:translateX(6px)}
+
+  .closing{padding:130px 40px 70px;text-align:center}
+  .closing h3{font-size:clamp(44px,12vw,170px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.9}
+  footer{border-top:1px solid var(--line);padding:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-size:13px;color:var(--muted);letter-spacing:.04em}
+  footer .links{display:flex;gap:28px}
+  footer a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <a class="brand" href="#top">
+    <img src="narrative-transparent-white.png" alt="Narrative" />
+  </a>
+  <div class="nav-links">
+    <a href="#companies">Companies</a>
+    <a href="#own">Own Your Story</a>
+  </div>
+</nav>
+
+<!-- ===================== SCROLL REVEAL INTRO ===================== -->
+<div class="intro-reveal" id="top">
+  <div class="pin">
+
+    <!-- HERO that is revealed through the N window -->
+    <div class="hero-bg">
+      <div class="field"></div>
+      <div class="hero-copy">
+        <div class="eyebrow">A Family of Coaching &amp; Consulting Companies</div>
+        <h1>
+          <span class="l1">The right story,</span>
+          <span class="l2">told well,</span>
+          <span class="l3">changes everything.</span>
+        </h1>
+        <p class="lede">We build the companies that help people find their story — and own it.</p>
+      </div>
+    </div>
+
+    <!-- charcoal cover with the real N glyph punched out (CSS mask) -->
+    <div class="reveal-cover" id="cover"></div>
+
+    <!-- solid brand N shown at load; fades out on first scroll so the hero comes through -->
+    <div class="logo-mark" id="logoMark"></div>
+
+    <div class="cue" id="cue"><div>Scroll</div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ===================== CONTENT ===================== -->
+<main class="content">
+
+  <div class="portfolio-head" id="companies">
+    <h3>The Portfolio</h3>
+    <div class="count">03 Companies</div>
+  </div>
+
+  <a class="company" href="https://www.narrativerevenue.com" target="_blank" rel="noopener">
+    <div class="c-name grad-text">Narrative<br>Revenue</div>
+    <div class="c-desc">Helps solo consultants close the gap between what they're worth and what they're making. We help them break through the $35–50K MRR ceiling — without burning everything down to do it.</div>
+    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
+  </a>
+
+  <a class="company careers" href="https://www.narrativecareers.com" target="_blank" rel="noopener">
+    <div class="c-name grad-text">Narrative<br>Careers</div>
+    <div class="c-desc">The answer for the parent who is scared to death for their kid's future. We've helped thousands of 16–21 year olds get hired — without the debt, the wait, or the uncertainty.</div>
+    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
+  </a>
+
+  <a class="company storyselling" href="https://www.narrativestoryselling.com" target="_blank" rel="noopener">
+    <div class="c-name">Narrative<br>StorySelling</div>
+    <div class="c-desc">The framework and philosophy behind everything we teach. StorySelling™ is the methodology that turns the way you tell your story into the way you win — the core craft that powers every Narrative company.</div>
+    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
+  </a>
+
+  <section class="book">
+    <a href="https://www.amazon.com/How-Sell-Story-Message-Faster/dp/B0FV3L6LKT/" target="_blank" rel="noopener">
+      <img class="b-mark" src="book-cover.jpg" alt="How to Sell With Story book cover" />
+      <div>
+        <div class="b-eyebrow">The Book</div>
+        <div class="b-title grad-text">How to Sell With Story</div>
+        <div class="b-desc">The culmination of everything I teach — the full StorySelling™ method, in a book. Get your message heard and close faster.</div>
+        <div class="b-cta">Get it on Amazon <span class="c-arrow">→</span></div>
+      </div>
+    </a>
+  </section>
+
+  <section class="founder" id="founder">
+    <div class="wrap">
+      <div class="eyebrow">About the Founder</div>
+      <h2>Hi, I'm <span class="grad-text">Chris Ford.</span></h2>
+      <p>I built the Narrative companies around one belief: the right story, told well, can change your entire life. It's the thread behind everything I teach — and the StorySelling™ method that powers all of it. Get the thinking, the stories, and the lessons firsthand.</p>
+      <a class="f-cta" href="https://www.itschrisford.com" target="_blank" rel="noopener">Visit itschrisford.com <span class="c-arrow">→</span></a>
+    </div>
+  </section>
+
+  <section class="closing" id="own">
+    <h3>Own your <span class="grad-text">story.</span></h3>
+  </section>
+
+  <footer>
+    <div>© 2026 Narrative Companies</div>
+    <div class="links">
+      <a href="https://www.narrativerevenue.com" target="_blank" rel="noopener">narrativerevenue.com</a>
+      <a href="https://www.narrativecareers.com" target="_blank" rel="noopener">narrativecareers.com</a>
+      <a href="https://www.narrativestoryselling.com" target="_blank" rel="noopener">narrativestoryselling.com</a>
+      <a href="https://www.itschrisford.com" target="_blank" rel="noopener">itschrisford.com</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  const cover  = document.getElementById('cover');
+  const logoMark = document.getElementById('logoMark');
+  const cue    = document.getElementById('cue');
+  const nav    = document.getElementById('nav');
+  const introEl = document.querySelector('.intro-reveal');
+
+  const N_START = 0; // px — window starts closed (solid charcoal) so the logo reads clean at load
+
+  function tick(){
+    const total = introEl.offsetHeight - window.innerHeight; // scroll distance for the reveal
+    const p = Math.min(Math.max(window.scrollY / total, 0), 1); // 0..1
+
+    // slow start, fast open — the N window grows until it floods the screen as p->1
+    const eased = Math.pow(p, 2);
+    const span = Math.max(window.innerWidth, window.innerHeight);
+    const size = N_START + eased * span * 9; // grow well past the viewport
+    const ms = `${size}px auto, cover`;
+    cover.style.webkitMaskSize = ms;
+    cover.style.maskSize = ms;
+
+    // at load the solid gradient N sits on the charcoal; on first scroll it fades
+    // out so the hero background comes through the N window
+    logoMark.style.opacity = Math.max(0, 1 - p / 0.22);
+
+    // fade the cover out over the final stretch so the glyph's semi-transparent
+    // edges don't leave a grey veil, then drop it entirely once fully open
+    cover.style.opacity = p < 0.85 ? 1 : Math.max(0, 1 - (p - 0.85) / 0.15);
+    cover.style.display = p >= 0.999 ? 'none' : 'block';
+
+    cue.classList.toggle('hide', p > 0.06);
+    nav.classList.toggle('solid', p > 0.6);
+  }
+
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  tick();
+</script>
+</body>
+</html>
