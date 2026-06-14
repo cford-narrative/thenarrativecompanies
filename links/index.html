@@ -112,10 +112,16 @@
       border-radius: 999px;
       background: var(--ink);
       color: #fff;
+      text-decoration: none;
       font-family: var(--sans);
       font-weight: 500;
       font-size: 12px;
       letter-spacing: 0.02em;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    a.badge:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
 
     .tagline {
@@ -190,6 +196,30 @@
       border: 1px solid var(--line);
     }
     .card.book .body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Company card — round brand icon beside the copy */
+    .card.company {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .card.company .icon {
+      flex: 0 0 52px;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+    .card.company .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .card.company .body {
       flex: 1;
       min-width: 0;
     }
@@ -298,25 +328,29 @@
     <section class="identity">
       <h1 class="name">Chris Ford</h1>
       <p class="handle">@itschrisford_</p>
-      <span class="badge">The Narrative Companies™</span>
+      <a class="badge" href="https://thenarrativecompanies.com" target="_blank" rel="noopener">The Narrative Companies™</a>
       <p class="tagline">I help people communicate their value. $28.6M+ in outcomes. Two companies. One methodology.</p>
     </section>
 
     <div class="divider"><span>The companies</span></div>
 
-    <a class="card" style="--accent:var(--revenue)" href="https://narrativerevenue.com" target="_blank" rel="noopener">
-      <p class="eyebrow">Narrative Revenue</p>
-      <p class="dest">Close more deals — built on the behavioral science of why buyers say yes.</p>
-      <p class="sub">For coaches, consultants &amp; micro-agency founders at the $35–50K MRR ceiling.</p>
+    <a class="card company" style="--accent:var(--revenue)" href="https://narrativerevenue.com" target="_blank" rel="noopener">
+      <span class="icon"><img src="/narrative-revenue-icon.png" alt="Narrative Revenue" /></span>
+      <span class="body">
+        <span class="eyebrow" style="display:block">Narrative Revenue</span>
+        <span class="dest" style="display:block">Close more deals — built on the behavioral science of why buyers say yes.</span>
+        <span class="sub" style="display:block">For coaches, consultants &amp; micro-agency founders at the $35–50K MRR ceiling.</span>
+      </span>
       <span class="arrow">&rarr;</span>
     </a>
 
-    <a class="card" style="--accent:var(--careers)" href="https://narrativecareers.com" target="_blank" rel="noopener">
-      <p class="eyebrow">Narrative Careers</p>
-      <p class="dest">Your kid deserves a job. Not just a diploma.</p>
-      <p class="sub">Career coaching program for 16–21 year olds. We do the work. They get the offer.
-
-</p>
+    <a class="card company" style="--accent:var(--careers)" href="https://narrativecareers.com" target="_blank" rel="noopener">
+      <span class="icon"><img src="/narrative-careers-icon.png" alt="Narrative Careers" /></span>
+      <span class="body">
+        <span class="eyebrow" style="display:block">Narrative Careers</span>
+        <span class="dest" style="display:block">Your kid deserves a job. Not just a diploma.</span>
+        <span class="sub" style="display:block">Career coaching program for 16–21 year olds. We do the work. They get the offer.</span>
+      </span>
       <span class="arrow">&rarr;</span>
     </a>
 
