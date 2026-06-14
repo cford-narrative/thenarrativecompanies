@@ -6,28 +6,36 @@
 <title>Narrative Companies — Own Your Story</title>
 <meta name="description" content="A family of coaching and consulting companies built around one core belief: the right story, told well, can change your entire life." />
 <link rel="icon" type="image/png" href="narrative-favicon-dark-white.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#E921A8;
-    --purple:#B163E6;
-    --powder:#a883f8;
-    --dark-purple:#752cff;
-    --teal:#5CA1C1;
-    --dark-teal:#0F4761;
-    --bg:#1B1D22;
-    --bg-alt:#231A25;
-    --fg:#ffffff;
-    --muted:#a79fb0;
+    /* editorial neutrals (shared system) */
+    --bone:#fcf8f2;--bone-soft:#f3ece1;--paper:#faf6ef;
+    --ink:#1B1D22;--ink-soft:rgba(27,29,34,0.72);--muted:rgba(27,29,34,0.60);
+    --rule:rgba(27,29,34,0.14);--rule-strong:rgba(27,29,34,0.28);
+    /* brand jewels */
+    --pink:#E921A8;--purple:#B163E6;--powder:#a883f8;--dark-purple:#752cff;
+    --teal:#5CA1C1;--dark-teal:#0F4761;--sky:#8ecbe2;
+    --cream-muted:rgba(250,246,239,0.64);
+    --serif:"Source Serif 4","Times New Roman",serif;
+    --sans:"Inter Tight",ui-sans-serif,system-ui,sans-serif;
+    --maxw:1220px;
+    /* dark hero tokens */
+    --bg:#1B1D22;--fg:#ffffff;
     --line:rgba(255,255,255,.10);
     --grad:linear-gradient(120deg,#E921A8 0%,#B163E6 45%,#752cff 100%);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    background:var(--bg);color:var(--fg);
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;line-height:1.2;overflow-x:hidden;
+    background:var(--bone);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    letter-spacing:-0.005em;overflow-x:hidden;
   }
+  ::selection{background:var(--dark-teal);color:var(--paper)}
   a{color:inherit;text-decoration:none}
   .grad-text{
     background:var(--grad);-webkit-background-clip:text;background-clip:text;
@@ -58,7 +66,7 @@
     100%{transform:scale(1.15) translate(-1%,3%)}
   }
   .hero-copy{
-    position:absolute;inset:0;z-index:1;
+    position:absolute;inset:0;z-index:1;color:#fff;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:88px 24px 40px; /* clears the fixed nav */
   }
@@ -128,101 +136,118 @@
     padding:20px 40px;transition:background .3s,border-color .3s;
     border-bottom:1px solid transparent;
   }
-  nav.solid{background:rgba(27,29,34,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.solid{background:rgba(252,248,242,0.82);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);border-bottom:1px solid var(--rule)}
   .brand{display:flex;align-items:center}
   .brand img{height:30px;width:auto;display:block}
-  .nav-links{display:flex;gap:32px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-  .nav-links a{opacity:.8;transition:opacity .2s}
+  .brand .logo-dark{display:none}
+  nav.solid .brand .logo-white{display:none}
+  nav.solid .brand .logo-dark{display:block}
+  .nav-links{display:flex;gap:8px;font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:0}
+  .nav-links a{padding:8px 14px;border-radius:999px;opacity:.85;transition:opacity .2s,background .15s,color .15s}
   .nav-links a:hover{opacity:1}
+  nav.solid .nav-links a{color:var(--ink);opacity:1}
+  nav.solid .nav-links a:hover{background:rgba(27,29,34,0.06);color:var(--dark-teal)}
   @media(max-width:680px){.nav-links{display:none}}
 
-  /* ============ PAGE CONTENT (below the reveal) ============ */
-  .content{position:relative;z-index:10;background:var(--bg)}
+  /* ============ PAGE CONTENT (below the reveal) — editorial light ============ */
+  .content{position:relative;z-index:10;background:var(--bone);color:var(--ink)}
+  /* paper grain, matched to the sibling sites */
+  .content::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:200;opacity:.07;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  .content h1,.content h2,.content h3,.content h4{font-family:var(--serif);font-weight:500;letter-spacing:-0.02em;line-height:1.04}
+  .wrap-max{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  @media(max-width:720px){.wrap-max{padding:0 22px}}
+  .eyebrow{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dark-teal);font-weight:600}
 
-  .belief{border-bottom:1px solid var(--line);background:var(--bg-alt);padding:120px 40px}
-  .belief p{font-size:clamp(26px,4.2vw,58px);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:1240px}
+  .portfolio-head{max-width:var(--maxw);margin:0 auto;padding:clamp(72px,9vw,120px) 40px 8px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+  .portfolio-head h3{font-family:var(--serif);font-size:clamp(30px,4vw,50px);font-weight:500;letter-spacing:-0.02em}
+  .portfolio-head .count{font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-  .portfolio-head{padding:84px 40px 16px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
-  .portfolio-head h3{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
-  .portfolio-head .count{font-size:14px;color:var(--muted)}
-
+  .companies-wrap{max-width:var(--maxw);margin:0 auto;padding:24px 40px 0}
+  @media(max-width:720px){.portfolio-head{padding-left:22px;padding-right:22px}.companies-wrap{padding-left:22px;padding-right:22px}}
   .company{
-    position:relative;border-top:1px solid var(--line);padding:52px 40px;
-    display:grid;grid-template-columns:1fr 1.6fr auto;gap:40px;align-items:center;
-    transition:color .35s;overflow:hidden;
+    position:relative;border-top:1px solid var(--rule);padding:44px 0;
+    display:grid;grid-template-columns:1fr 1.5fr auto;gap:40px;align-items:center;
+    transition:color .35s;
   }
-  .company:last-of-type{border-bottom:1px solid var(--line)}
-  .company::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s;z-index:-1}
-  .company:hover::before{opacity:1}
-  .company:hover .c-desc{color:rgba(255,255,255,.92)}
+  .company:last-of-type{border-bottom:1px solid var(--rule)}
+  .company:hover .c-desc{color:var(--ink-soft)}
+  .company:hover .c-name{color:var(--dark-teal)}
   .company:hover .c-arrow{transform:translateX(8px)}
-  .c-name{font-size:clamp(30px,4.5vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1}
-  .c-desc{font-size:clamp(15px,1.7vw,19px);line-height:1.5;color:var(--muted);max-width:560px;transition:color .35s}
-  .c-cta{display:flex;align-items:center;gap:14px;white-space:nowrap;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
-  .c-arrow{display:inline-block;font-size:24px;transition:transform .3s}
-  .company:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
+  .c-name{font-family:var(--serif);font-size:clamp(28px,4vw,50px);font-weight:500;letter-spacing:-0.025em;line-height:1.04;color:var(--ink);transition:color .35s}
+  .c-desc{font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:var(--muted);max-width:560px;transition:color .35s}
+  .c-cta{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:0;color:var(--dark-teal)}
+  .c-arrow{display:inline-block;font-size:20px;transition:transform .3s}
+  /* per-brand accent dot/name tint on hover */
+  .company.revenue:hover .c-name{color:var(--pink)}
+  .company.storyselling:hover .c-name{color:#C2410C}
+  @media(max-width:880px){.company{grid-template-columns:1fr;gap:16px;padding:36px 0}.c-cta{justify-content:flex-start}}
 
-  /* Narrative Careers — blue/green identity */
-  .company.careers .c-name{
-    background:linear-gradient(120deg,#5CA1C1 0%,#0F4761 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  }
-  .company.careers::before{background:linear-gradient(120deg,#5CA1C1 0%,#0F4761 62%,#1f1c27 100%)}
-  .company.careers:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
-  /* Narrative StorySelling — amber/gold identity */
-  .company.storyselling .c-name{
-    background:linear-gradient(120deg,#F6B73C 0%,#E8852A 55%,#C2410C 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  }
-  .company.storyselling::before{background:linear-gradient(120deg,#F6B73C 0%,#E8852A 55%,#1f1c27 100%)}
-  .company.storyselling:hover .c-name{background:none;-webkit-text-fill-color:#fff;color:#fff}
-  @media(max-width:880px){.company{grid-template-columns:1fr;gap:18px;padding:44px 40px}.c-cta{justify-content:flex-start}}
+  /* ============ METHODOLOGY ============ */
+  .methodology{border-top:1px solid var(--rule);padding:clamp(72px,9vw,110px) 40px}
+  @media(max-width:720px){.methodology{padding-left:22px;padding-right:22px}}
+  .methodology-inner{display:block;max-width:var(--maxw);margin:0 auto}
+  .methodology .eyebrow{margin-bottom:20px}
+  .m-title{font-family:var(--serif);font-size:clamp(34px,5.4vw,68px);font-weight:500;letter-spacing:-0.025em;line-height:1.02;color:var(--ink);transition:color .35s}
+  .methodology-inner:hover .m-title{color:#C2410C}
+  .m-desc{margin-top:22px;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--muted);max-width:720px}
+  .m-cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:var(--sans);font-weight:500;font-size:15px;color:#C2410C}
+  .m-cta .c-arrow{font-size:20px;transition:transform .3s}
+  .methodology-inner:hover .m-cta .c-arrow{transform:translateX(8px)}
 
   /* ============ BOOK ============ */
   .book{
-    border-top:1px solid var(--line);background:var(--bg-alt);
-    padding:96px 40px;display:flex;justify-content:center;
+    border-top:1px solid var(--rule);background:var(--bone-soft);
+    padding:clamp(72px,9vw,110px) 40px;display:flex;justify-content:center;
   }
+  @media(max-width:720px){.book{padding-left:22px;padding-right:22px}}
   .book a{
-    display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;
+    display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center;
     max-width:1100px;width:100%;
   }
-  .book .b-eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
-  .book .b-title{font-size:clamp(28px,3.8vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
-  .book .b-desc{margin-top:16px;font-size:clamp(15px,1.6vw,18px);line-height:1.5;color:var(--muted);max-width:560px}
-  .book .b-cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
-  .book .b-cta .c-arrow{font-size:24px;transition:transform .3s}
+  .book .b-eyebrow{margin-bottom:18px}
+  .book .b-title{font-family:var(--serif);font-size:clamp(28px,3.8vw,46px);font-weight:500;letter-spacing:-0.02em;line-height:1.06}
+  .book .b-desc{margin-top:16px;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:var(--muted);max-width:560px}
+  .book .b-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--dark-teal)}
+  .book .b-cta .c-arrow{font-size:20px;transition:transform .3s}
   .book a:hover .b-cta .c-arrow{transform:translateX(8px)}
   .book .b-mark{
     width:170px;height:auto;border-radius:10px;flex-shrink:0;display:block;
-    box-shadow:0 18px 50px rgba(0,0,0,.5);
+    box-shadow:0 30px 70px -36px rgba(27,29,34,.55),0 0 0 1px rgba(27,29,34,.05);
   }
-  @media(max-width:880px){.book a{grid-template-columns:1fr;gap:24px;justify-items:start}}
+  @media(max-width:880px){.book a{grid-template-columns:1fr;gap:28px;justify-items:start}}
 
   /* ============ ABOUT THE FOUNDER ============ */
-  .founder{border-top:1px solid var(--line);padding:110px 40px}
+  .founder{border-top:1px solid var(--rule);padding:clamp(80px,10vw,120px) 40px}
+  @media(max-width:720px){.founder{padding-left:22px;padding-right:22px}}
   .founder .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,80px);align-items:center}
   .founder-photo{display:flex;justify-content:center}
-  .founder-photo-inner{background:#f3ece1;border-radius:24px;padding:30px 30px 0;display:flex;justify-content:center;align-items:flex-end;width:100%;max-width:400px;box-shadow:0 30px 70px -36px rgba(0,0,0,.6)}
+  .founder-photo-inner{background:transparent;border-radius:0;padding:0;display:flex;justify-content:center;align-items:flex-end;width:100%;max-width:400px}
   .founder-photo img{width:100%;max-width:330px;height:auto;display:block}
   @media(max-width:820px){.founder .wrap{grid-template-columns:1fr;gap:24px}.founder-photo{order:-1}.founder-photo-inner{max-width:300px}}
-  .founder .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:22px}
-  .founder h2{font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.05;max-width:900px}
-  .founder p{margin-top:24px;font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:var(--muted);max-width:720px}
+  .founder .eyebrow{margin-bottom:22px}
+  .founder h2{font-family:var(--serif);font-size:clamp(34px,5vw,60px);font-weight:500;letter-spacing:-0.025em;line-height:1.05;max-width:900px}
+  .founder h2 .grad-text{font-style:italic}
+  .founder p{margin-top:24px;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--muted);max-width:720px}
   .founder .f-cta{
-    display:inline-flex;align-items:center;gap:12px;margin-top:34px;
-    font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;
-    padding:14px 24px;border:1px solid var(--line);border-radius:999px;transition:background .3s,border-color .3s;
+    display:inline-flex;align-items:center;gap:10px;margin-top:34px;
+    font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:0;
+    padding:15px 24px;border-radius:999px;background:var(--ink);color:var(--paper);
+    transition:transform .18s ease,background .18s ease,box-shadow .25s ease;
   }
-  .founder .f-cta:hover{background:var(--grad);border-color:transparent}
-  .founder .f-cta .c-arrow{font-size:22px;transition:transform .3s}
-  .founder .f-cta:hover .c-arrow{transform:translateX(6px)}
+  .founder .f-cta:hover{background:var(--dark-teal);transform:translateY(-1px);box-shadow:0 14px 30px -16px rgba(15,71,97,.7)}
+  .founder .f-cta .c-arrow{font-size:18px;transition:transform .25s}
+  .founder .f-cta:hover .c-arrow{transform:translateX(4px)}
 
-  .closing{padding:130px 40px 70px;text-align:center}
-  .closing h3{font-size:clamp(44px,12vw,170px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.9}
-  footer{border-top:1px solid var(--line);padding:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-size:13px;color:var(--muted);letter-spacing:.04em}
-  footer .links{display:flex;gap:28px}
-  footer a:hover{color:var(--fg)}
+  /* ============ CLOSING — ink section like the siblings ============ */
+  .closing{background:var(--ink);color:var(--paper);padding:clamp(96px,13vw,150px) 40px;text-align:center}
+  .closing h3{font-family:var(--serif);font-size:clamp(48px,11vw,150px);font-weight:500;letter-spacing:-0.03em;line-height:.92;color:var(--paper)}
+  .closing h3 .grad-text{font-style:italic}
+
+  footer{background:var(--ink);color:var(--cream-muted);border-top:1px solid rgba(255,255,255,.10);padding:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-family:var(--sans);font-size:13px;letter-spacing:.02em}
+  footer a{color:rgba(250,246,239,0.74)}
+  footer .links{display:flex;gap:24px;flex-wrap:wrap}
+  footer a:hover{color:var(--sky)}
 </style>
 </head>
 <body>
@@ -230,7 +255,8 @@
 <!-- ===================== NAV ===================== -->
 <nav id="nav">
   <a class="brand" href="#top">
-    <img src="narrative-transparent-white.png" alt="Narrative" />
+    <img class="logo-white" src="narrative-transparent-white.png" alt="Narrative" />
+    <img class="logo-dark" src="narrative-logo-dark.png" alt="Narrative" />
   </a>
   <div class="nav-links">
     <a href="#companies">Companies</a>
@@ -270,27 +296,38 @@
 <main class="content">
 
   <div class="portfolio-head" id="companies">
-    <h3>The Portfolio</h3>
-    <div class="count">03 Companies</div>
+    <div>
+      <span class="eyebrow" style="margin-bottom:14px">The Portfolio</span>
+      <h3>A family of companies,<br>one belief.</h3>
+    </div>
+    <div class="count">02 Companies</div>
   </div>
 
-  <a class="company" href="https://www.narrativerevenue.com" target="_blank" rel="noopener">
-    <div class="c-name grad-text">Narrative<br>Revenue</div>
-    <div class="c-desc">Helps solo consultants close the gap between what they're worth and what they're making. We help them break through the $35–50K MRR ceiling — without burning everything down to do it.</div>
-    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
-  </a>
+  <div class="companies-wrap">
+    <a class="company revenue" href="https://www.narrativerevenue.com" target="_blank" rel="noopener">
+      <div class="c-name">Narrative<br>Revenue</div>
+      <div class="c-desc">Helps solo consultants close the gap between what they're worth and what they're making. We help them break through the $35–50K MRR ceiling — without burning everything down to do it.</div>
+      <div class="c-cta">Visit <span class="c-arrow">→</span></div>
+    </a>
 
-  <a class="company careers" href="https://www.narrativecareers.com" target="_blank" rel="noopener">
-    <div class="c-name grad-text">Narrative<br>Careers</div>
-    <div class="c-desc">The answer for the parent who is scared to death for their kid's future. We've helped thousands of 16–21 year olds get hired — without the debt, the wait, or the uncertainty.</div>
-    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
-  </a>
+    <a class="company careers" href="https://www.narrativecareers.com" target="_blank" rel="noopener">
+      <div class="c-name">Narrative<br>Careers</div>
+      <div class="c-desc">The answer for the parent who is scared to death for their kid's future. We've helped thousands of 16–21 year olds get hired — without the debt, the wait, or the uncertainty.</div>
+      <div class="c-cta">Visit <span class="c-arrow">→</span></div>
+    </a>
 
-  <a class="company storyselling" href="https://www.narrativestoryselling.com" target="_blank" rel="noopener">
-    <div class="c-name">Narrative<br>StorySelling™</div>
-    <div class="c-desc">The framework and philosophy behind everything we teach. Narrative StorySelling™ is the methodology that turns the way you tell your story into the way you win — the core craft that powers every Narrative company.</div>
-    <div class="c-cta">Visit <span class="c-arrow">→</span></div>
-  </a>
+  </div>
+
+  <section class="methodology" id="methodology">
+    <a class="methodology-inner" href="https://www.narrativestoryselling.com" target="_blank" rel="noopener">
+      <div class="m-text">
+        <span class="eyebrow">The Methodology</span>
+        <h3 class="m-title">Narrative StorySelling™</h3>
+        <p class="m-desc">The framework and philosophy behind everything we teach. Narrative StorySelling™ is the methodology that turns the way you tell your story into the way you win — the core craft that powers every Narrative company.</p>
+        <div class="m-cta">Explore the method <span class="c-arrow">→</span></div>
+      </div>
+    </a>
+  </section>
 
   <section class="book">
     <a href="https://www.amazon.com/How-Sell-Story-Message-Faster/dp/B0FV3L6LKT/" target="_blank" rel="noopener">
@@ -309,7 +346,7 @@
       <div class="founder-text">
         <div class="eyebrow">About the Founder</div>
         <h2>Hi, I'm <span class="grad-text">Chris Ford.</span></h2>
-        <p>I built the Narrative companies around one belief: <em style="font-style:italic;font-weight:700;color:#96c4d9">the right story, told well, can change your entire life.</em> It's the thread behind everything I teach — and the Narrative StorySelling™ method that powers all of it. Get the thinking, the stories, and the lessons firsthand.</p>
+        <p>I built the Narrative companies around one belief: <em style="font-style:italic;font-weight:600;color:var(--dark-teal)">the right story, told well, can change your entire life.</em> It's the thread behind everything I teach — and the Narrative StorySelling™ method that powers all of it. Get the thinking, the stories, and the lessons firsthand.</p>
         <a class="f-cta" href="https://www.itschrisford.com" target="_blank" rel="noopener">Visit itschrisford.com <span class="c-arrow">→</span></a>
       </div>
       <div class="founder-photo"><div class="founder-photo-inner"><img src="cf-design.png" alt="Chris Ford"></div></div>
