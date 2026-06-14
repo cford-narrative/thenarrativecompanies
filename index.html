@@ -203,8 +203,9 @@
   .founder{border-top:1px solid var(--line);padding:110px 40px}
   .founder .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,80px);align-items:center}
   .founder-photo{display:flex;justify-content:center}
-  .founder-photo img{width:100%;max-width:380px;height:auto;display:block}
-  @media(max-width:820px){.founder .wrap{grid-template-columns:1fr;gap:24px}.founder-photo{order:-1;max-width:300px}}
+  .founder-photo-inner{background:#f3ece1;border-radius:24px;padding:30px 30px 0;display:flex;justify-content:center;align-items:flex-end;width:100%;max-width:400px;box-shadow:0 30px 70px -36px rgba(0,0,0,.6)}
+  .founder-photo img{width:100%;max-width:330px;height:auto;display:block}
+  @media(max-width:820px){.founder .wrap{grid-template-columns:1fr;gap:24px}.founder-photo{order:-1}.founder-photo-inner{max-width:300px}}
   .founder .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:22px}
   .founder h2{font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.05;max-width:900px}
   .founder p{margin-top:24px;font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:var(--muted);max-width:720px}
@@ -311,7 +312,7 @@
         <p>I built the Narrative companies around one belief: <em style="font-style:italic;font-weight:700;color:#96c4d9">the right story, told well, can change your entire life.</em> It's the thread behind everything I teach — and the Narrative StorySelling™ method that powers all of it. Get the thinking, the stories, and the lessons firsthand.</p>
         <a class="f-cta" href="https://www.itschrisford.com" target="_blank" rel="noopener">Visit itschrisford.com <span class="c-arrow">→</span></a>
       </div>
-      <div class="founder-photo"><img src="cf-design.png" alt="Chris Ford"></div>
+      <div class="founder-photo"><div class="founder-photo-inner"><img src="cf-design.png" alt="Chris Ford"></div></div>
     </div>
   </section>
 
