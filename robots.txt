@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.thenarrativecompanies.com/sitemap.xml
+Sitemap: https://thenarrativecompanies.com/sitemap.xml
