@@ -172,22 +172,27 @@
   }
   .company:last-of-type{border-bottom:1px solid var(--rule)}
   .company:hover .c-desc{color:var(--ink-soft)}
-  .company:hover .c-name{color:var(--dark-teal)}
   .company:hover .c-arrow{transform:translateX(8px)}
+  .c-id{display:flex;flex-direction:column;gap:18px}
+  .c-icon{width:54px;height:54px;border-radius:50%;display:block;box-shadow:0 6px 18px -8px rgba(27,29,34,.35)}
   .c-name{font-family:var(--serif);font-size:clamp(28px,4vw,50px);font-weight:500;letter-spacing:-0.025em;line-height:1.04;color:var(--ink);transition:color .35s}
   .c-desc{font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:var(--muted);max-width:560px;transition:color .35s}
   .c-cta{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:0;color:var(--dark-teal)}
   .c-arrow{display:inline-block;font-size:20px;transition:transform .3s}
-  /* per-brand accent dot/name tint on hover */
+  /* names stay ink — the logo carries the brand color; CTA keeps the accent */
+  .company.revenue .c-cta{color:var(--pink)}
+  .company.careers .c-cta{color:var(--dark-teal)}
+  /* on hover the name tints to its brand color */
   .company.revenue:hover .c-name{color:var(--pink)}
-  .company.storyselling:hover .c-name{color:#A8842B}
+  .company.careers:hover .c-name{color:var(--dark-teal)}
   @media(max-width:880px){.company{grid-template-columns:1fr;gap:16px;padding:36px 0}.c-cta{justify-content:flex-start}}
 
   /* ============ METHODOLOGY ============ */
   .methodology{border-top:1px solid var(--rule);padding:clamp(72px,9vw,110px) 40px}
   @media(max-width:720px){.methodology{padding-left:22px;padding-right:22px}}
   .methodology-inner{display:block;max-width:var(--maxw);margin:0 auto}
-  .methodology .eyebrow{margin-bottom:20px}
+  .m-icon{width:54px;height:54px;border-radius:50%;display:block;margin-bottom:26px;box-shadow:0 6px 18px -8px rgba(27,29,34,.35)}
+  .methodology .eyebrow{margin-bottom:20px;color:#A8842B}
   .m-title{font-family:var(--serif);font-size:clamp(34px,5.4vw,68px);font-weight:500;letter-spacing:-0.025em;line-height:1.02;color:var(--ink);transition:color .35s}
   .methodology-inner:hover .m-title{color:#A8842B}
   .m-desc{margin-top:22px;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--muted);max-width:720px}
@@ -206,7 +211,7 @@
     max-width:1100px;width:100%;
   }
   .book .b-eyebrow{margin-bottom:18px}
-  .book .b-title{font-family:var(--serif);font-size:clamp(28px,3.8vw,46px);font-weight:500;letter-spacing:-0.02em;line-height:1.06}
+  .book .b-title{font-family:var(--serif);font-size:clamp(28px,3.8vw,46px);font-weight:500;letter-spacing:-0.02em;line-height:1.06;color:var(--dark-teal)}
   .book .b-desc{margin-top:16px;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:var(--muted);max-width:560px}
   .book .b-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--dark-teal)}
   .book .b-cta .c-arrow{font-size:20px;transition:transform .3s}
@@ -305,13 +310,19 @@
 
   <div class="companies-wrap">
     <a class="company revenue" href="https://www.narrativerevenue.com" target="_blank" rel="noopener">
-      <div class="c-name">Narrative<br>Revenue</div>
+      <div class="c-id">
+        <img class="c-icon" src="narrative-revenue-icon.png" alt="" aria-hidden="true" />
+        <div class="c-name">Narrative<br>Revenue</div>
+      </div>
       <div class="c-desc">Helps solo consultants close the gap between what they're worth and what they're making. We help them break through the $35–50K MRR ceiling — without burning everything down to do it.</div>
       <div class="c-cta">Visit <span class="c-arrow">→</span></div>
     </a>
 
     <a class="company careers" href="https://www.narrativecareers.com" target="_blank" rel="noopener">
-      <div class="c-name">Narrative<br>Careers</div>
+      <div class="c-id">
+        <img class="c-icon" src="narrative-careers-icon.png" alt="" aria-hidden="true" />
+        <div class="c-name">Narrative<br>Careers</div>
+      </div>
       <div class="c-desc">The answer for the parent who is scared to death for their kid's future. We've helped thousands of 16–21 year olds get hired — without the debt, the wait, or the uncertainty.</div>
       <div class="c-cta">Visit <span class="c-arrow">→</span></div>
     </a>
@@ -321,6 +332,7 @@
   <section class="methodology" id="methodology">
     <a class="methodology-inner" href="https://www.narrativestoryselling.com" target="_blank" rel="noopener">
       <div class="m-text">
+        <img class="m-icon" src="narrative-storyselling-icon-gold.png" alt="" aria-hidden="true" />
         <span class="eyebrow">The Methodology</span>
         <h3 class="m-title">Narrative StorySelling™</h3>
         <p class="m-desc">The framework and philosophy behind everything we teach. Narrative StorySelling™ is the methodology that turns the way you tell your story into the way you win — the core craft that powers every Narrative company.</p>
@@ -334,7 +346,7 @@
       <img class="b-mark" src="book-cover.jpg" alt="How to Sell With Story book cover" />
       <div>
         <div class="b-eyebrow">The Book</div>
-        <div class="b-title grad-text">How to Sell With Story</div>
+        <div class="b-title">How to Sell With Story</div>
         <div class="b-desc">The culmination of everything I teach — the full Narrative StorySelling™ method, in a book. Get your message heard and close faster.</div>
         <div class="b-cta">Get it on Amazon <span class="c-arrow">→</span></div>
       </div>
@@ -345,7 +357,7 @@
     <div class="wrap">
       <div class="founder-text">
         <div class="eyebrow">About the Founder</div>
-        <h2>Hi, I'm <span class="grad-text">Chris Ford.</span></h2>
+        <h2>Hi, I'm <span style="color:var(--dark-teal);font-style:italic">Chris Ford.</span></h2>
         <p>I built the Narrative companies around one belief: <em style="font-style:italic;font-weight:600;color:var(--dark-teal)">the right story, told well, can change your entire life.</em> It's the thread behind everything I teach — and the Narrative StorySelling™ method that powers all of it. Get the thinking, the stories, and the lessons firsthand.</p>
         <a class="f-cta" href="https://www.itschrisford.com" target="_blank" rel="noopener">Visit itschrisford.com <span class="c-arrow">→</span></a>
       </div>
